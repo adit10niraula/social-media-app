@@ -1,0 +1,29 @@
+.profile-container{
+    display:flex;
+    justify-content: space-around;
+}
+.follow-container{
+    display:flex;
+    justify-content: space-between;
+    gap:10px;
+    
+}
+
+.following, .follower{
+    border:1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    width:100%;
+}
+
+.tweeter-container{
+    display:flex;
+    justify-content: space-around;
+}
+.tweetters{
+    width: 60%;
+}
+.commetn{
+    width:400px;
+ 
+}

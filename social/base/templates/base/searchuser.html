@@ -1,0 +1,70 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+
+
+{% if request.user.is_authenticated %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-floating commetn">
+        <input type="text" name="search">
+      </div>
+    <button type="submit"> post </button>
+
+</form>
+{% endif %}
+
+{% if search %}
+<p> you search for : {{search}} user </p>
+
+
+{% endif %}
+
+
+{% if profiles %}
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 p-5">
+    {% for profile in profiles%}
+    <div class="col p-5">
+      <div class="card shadow-sm">  
+       {% if profile.profile.profile_image%}
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" ><img src="{{profile.profile.profile_image.url}}" alt="Profile Image"></svg>
+        {% else %}
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" ><img src="{% static 'images/profile.jpg' %}" alt="Profile Image"></svg>
+
+        {% endif %} 
+        <div class="card-body">
+           
+          <p class="card-text">{{profile.username}}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary"> <a href="{% url 'profile' profile.id %}">View</a></button>
+             
+            </div>
+            
+            <small class="text-body-secondary">{{profile.date_modified}}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+    
+  </div>
+
+  {% else %}
+
+  {% if profiles == None %}
+
+  {% else %}
+  <p> no profile found </p>
+
+  {% endif %}
+
+
+{% endif %}
+
+
+
+
+{% endblock %}

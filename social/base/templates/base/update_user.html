@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<h1> update user</h1>
+
+
+<div class =" col-md-6 offset-md-3 p-10">
+    <br>
+      <form method="POST" action = "" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <br>
+        {{profile_form.as_p}}
+         
+          <button type="submit" class="btn btn-primary">login</button>
+        </form>
+  
+  </div>
+
+
+{% endblock %}
